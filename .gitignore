@@ -1,0 +1,18 @@
+# Binarios
+/criton-api
+/dist/
+bin/
+
+# Variables de entorno (¡Súper importante!)
+.env
+.env.local
+
+# Herramientas de Go
+vendor/
+*.test
+*.out
+
+# IDEs (NeoVim y otros)
+.netrwhist
+undo/
+.swp
