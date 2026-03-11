@@ -72,6 +72,42 @@ classDiagram
     Attendance *-- AttendanceID
 ```
 
+### 2. Entidades
+
+```mermaid
+erDiagram
+    USERS ||--o{ ATTENDANCE_LOGS : "registra"
+    USERS ||--|| USER_STATS : "posee"
+    
+    USERS {
+        uuid id PK
+        string name
+        string email UK
+        string password_hash
+        string role "admin | staff | employee"
+        boolean is_active
+        timestamp created_at
+    }
+
+    ATTENDANCE_LOGS {
+        uuid id PK
+        uuid user_id FK
+        timestamp timestamp
+        string signature_url "URL de GCS"
+        inet ip_address
+        string status "pending | verified | rejected"
+        timestamp updated_at
+    }
+
+    USER_STATS {
+        uuid user_id PK, FK
+        int total_checkins
+        float punctuality_rate
+        int current_streak
+        timestamp last_activity
+    }
+```
+
 🛠️ Stack Tecnológico
 
     Lenguaje: Go 1.21+ (Fuerte énfasis en tipos y concurrencia).
